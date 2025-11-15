@@ -9,18 +9,16 @@ public class Saludo {
     @GetMapping("/api/saludo/{nombre}")
     public String saludo(@PathVariable String nombre) {
         if (nombre.length() >= 3) {
-            return "¡Bienvenido usuario:, " + nombre + "!";
+            return "¡Bienvenido usuario: " + nombre + "!";
         } else {
             throw new IllegalArgumentException("El nombre debe tener al menos 3 caracteres.");
-
         }
     }
 
-    // Manejador global para IllegalArgumentException
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
+    public ResponseEntity<String> manejarError(IllegalArgumentException ex) {
         return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST) 
+                .status(HttpStatus.BAD_REQUEST)
                 .body("Error: " + ex.getMessage());
     }
 }
