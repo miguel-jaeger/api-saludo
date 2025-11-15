@@ -1,5 +1,16 @@
 package com.saludo.app.controlador;
 
-public class Saludo {
+import org.springframework.web.bind.annotation.*;
 
+@RestController
+public class Saludo {
+    @GetMapping("/api/saludo/{nombre}")
+    public String saludo(@PathVariable String nombre) {
+        if (nombre.length() >= 3) {
+            return "¡Bienvenido, " + nombre + "!";
+        } else {
+            throw new IllegalArgumentException("El nombre debe tener al menos 3 caracteres.");
+
+        }
+    }
 }
