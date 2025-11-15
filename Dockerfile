@@ -3,7 +3,7 @@ WORKDIR /app/app
 #RUN mkdir -p /app/autenticar/db
 
 # Copiar todo el código fuente del proyecto
-COPY autenticar ./ 
+COPY app ./ 
 
 # Construir proyecto
 RUN mvn -B -DskipTests=true clean package
