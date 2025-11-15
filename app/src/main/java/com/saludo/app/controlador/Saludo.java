@@ -7,7 +7,7 @@ public class Saludo {
     @GetMapping("/api/saludo/{nombre}")
     public String saludo(@PathVariable String nombre) {
         if (nombre.length() >= 3) {
-            return "¡Bienvenido, " + nombre + "!";
+            return "¡Bienvenido usuario:, " + nombre + "!";
         } else {
             throw new IllegalArgumentException("El nombre debe tener al menos 3 caracteres.");
 
